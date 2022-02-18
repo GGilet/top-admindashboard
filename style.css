@@ -8,9 +8,13 @@
 	--accent: #66d7d1;
 	--text-color: #818181;
 
+	--card-width: 350px;
+	--side-card-width: 50px;
+
 	/* Icon Sizes */
 	--large: 75px;
 	--medium: 50px;
+	--small: 40px;
 }
 
 html,
@@ -143,19 +147,17 @@ table {
 .dashboard-container {
 	display: flex;
 	/* gap: 20px; */
-	height: 100vh;
-	width: 100vw;
 }
 
 .sidebar-container {
 	background-color: var(--sidebar-color);
 	padding: 20px;
-	width: 15%;
+	width: 20%;
 }
 
 .main-content-container {
 	background-color: var(--card-container-bg);
-	width: 85%;
+	width: 80%;
 }
 
 .search-user-main-container {
@@ -233,7 +235,6 @@ a {
 .user-action-main-container {
 	display: grid;
 	grid-template-columns: 2.5fr 1.5fr;
-	row-gap: 1em;
 	align-items: center;
 }
 
@@ -304,7 +305,7 @@ a {
 
 .user-greeting-container p {
 	font-weight: 900;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 .user-greeting-container img {
@@ -340,6 +341,184 @@ a {
 
 /* Project Cards */
 
+.projects-main-container {
+	display: grid;
+	column-gap: 1em;
+	row-gap: 0;
+	/* height: 10%; */
+	grid-auto-rows: auto 16fr 40px 16em;
+	/* grid-template-columns: 350px 350px 1fr; */
+	grid-template-areas:
+		'title 		title  		announcement-title'
+		'projects   projects 	announcement'
+		'projects   projects 	trending-title'
+		'projects   projects 	trending';
+
+	/* height: 100vh; */
+
+	width: calc(100vw - 80px);
+}
+
+.projects-main-container h2 {
+	font-weight: 700;
+	font-size: 1.05em;
+	padding-top: 1em;
+}
+
+.projects-main-container p {
+	font-size: 0.85em;
+	color: var(--text-color);
+}
+
+.announcement-title {
+	grid-area: announcement-title;
+}
+.projects-container {
+	grid-area: projects;
+}
+
+.announcement-card {
+	grid-area: announcement;
+}
+
+.trending-card {
+	grid-area: trending;
+}
+
+.trending-title {
+	grid-area: trending-title;
+}
+.project-cards {
+	background-color: var(--white);
+	padding: 1em;
+	box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	-webkit-box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	-moz-box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	/* justify-items: stretch; */
+
+	display: grid;
+	/* grid-auto-rows: minmax(2fr, auto); */
+	grid-template-rows: 0.2fr 1fr 0.2fr;
+	/* grid-auto-rows: auto; */
+	border-radius: 0.5em;
+	border-left: 0.4em solid var(--accent);
+	line-height: 1em;
+}
+
+.project-cards p {
+	padding-top: 0.5em;
+}
+
+.announcement-card {
+	background-color: var(--white);
+	padding: 1em;
+	box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	-webkit-box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	-moz-box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	border-radius: 0.5em;
+
+	padding: 1.5em 2em;
+	max-height: 350px;
+	min-width: 250px;
+}
+
+.trending-card {
+	background-color: var(--white);
+	padding: 1em;
+	box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	-webkit-box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	-moz-box-shadow: -1px 2px 5px 0px rgba(148, 148, 148, 0.75);
+	/* justify-items: stretch; */
+	border-radius: 0.5em;
+
+	padding: 1.5em 2em;
+	/* align-self: stretch; */
+}
+
+.announcements-container > h3:nth-child(2) {
+}
+
+.announcement-card p {
+	font-size: 0.75em;
+	padding: 0.2em 0 1em 0;
+	line-height: 0.9rem;
+}
+
+.announcement-card h3 {
+	font-weight: 700;
+}
+
+.action-icons {
+	justify-self: end;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 1em;
+	color: var(--sidebar-color);
+}
+
+.action-icons .material-icons:hover {
+	cursor: pointer;
+	color: var(--accent);
+}
+
+.projects-container {
+	display: grid;
+	/* grid-template-columns: repeat(2, 0.75fr); */
+	gap: 1em;
+	grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+}
+
 img {
 	width: 30px;
+}
+
+.card6,
+.card7 {
+	width: 60%;
+}
+
+.announcements-container h3:nth-child(3),
+.announcements-container h3:nth-child(5) {
+	/* background-color: red; */
+	border-top: 1px solid #eee;
+	padding-top: 1em;
+}
+
+/* Trending Card */
+
+.trendings-container {
+	display: grid;
+	row-gap: 1em;
+}
+
+.trending-container {
+	display: grid;
+	grid-template-columns: 0.5fr 2fr;
+}
+
+.trending-container span {
+	font-size: 12px;
+}
+
+.trending-container img {
+	border-radius: 100%;
+	width: var(--small);
+	height: var(--small);
+}
+
+.trending-user-tag {
+	display: grid;
+	grid-template-rows: 1fr 2fr;
+	row-gap: 0.25em;
+	font-size: 15px;
+}
+
+.trending-user-tag span {
+	text-transform: lowercase;
+}
+
+.trending-user-img {
+}
+
+.trending-user-tag {
 }
